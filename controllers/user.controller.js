@@ -34,23 +34,6 @@ module.exports.findById = function(req, res){
 
 module.exports.postCreate = function(req, res){
     req.body.id = shortid.generate();
-    var errors = [];
-
-    if(!req.body.name){
-        errors.push('Fill your name');
-    }
-
-    if(!req.body.phone){
-        errors.push('Fill your phone number');
-    }
-
-    if(errors.length){
-        res.render('users/create', {
-            errors : errors,
-            values : req.body
-        });
-    }
-
     db.get('users').push(req.body).write();
     res.redirect('/users');
 }

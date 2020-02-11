@@ -1,7 +1,17 @@
-h1 Create
+extends ../layouts/common.pug
+block content
+    h1 Create
 
-form(action="/users/create", method="POST")
-    label Name
-    input(name="name", type="text")
+    if errors
+        each error in errors
+            .alert.alert-danger= error
 
-    button Create
+    form(action="/users/create", method="POST")
+        .form-group
+            label(for="name") Name
+            input#name.form-control(name="name", type="text", values=values ? values.name : '')
+        .form-group
+            label(for="phone") Phone
+            input#phone.form-control(name="phone", type="text" values=values ? values.phone : '')
+
+        button(class="btn btn-primary") Create

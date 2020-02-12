@@ -14,6 +14,7 @@ module.exports.postCreate = function(req, res, next){
             errors : errors,
             values : req.body
         });
+        return;
     }
 
     next();

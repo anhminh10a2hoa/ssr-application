@@ -1,9 +1,9 @@
 var express = require('express');
-var router = express.Router();
-var controller = require('../controllers/user.controller')
-const shortid = require('shortid');
-var db = require('../db');
+
+var controller = require('../controllers/user.controller');
 var validate = require('../validate/user.validate');
+
+var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/search', controller.search);

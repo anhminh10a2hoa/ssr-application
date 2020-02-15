@@ -1,11 +1,17 @@
+require('dotenv').config()
+
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
 
 var userRoute = require('./routes/user.route')
 var authRoute = require('./routes/auth.route')
+var productRoute = require('./routes/product.route')
+var cartRoute = require('./routes/cart.route')
+var tranferRoute = require('./routes/tranfer.route')
 
 var authMiddlewares = require('./middlewares/auth.middlewares');
+var sessionMiddlewares = require('./middlewares/session.middlewares');
 
 const port = 3001;
 
@@ -14,7 +20,8 @@ app.set('views', './views');
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-app.use(cookieParser())
+app.use(cookieParser(process.env.SESSION_SECRET))
+app.use(sessionMiddlewares);
 
 app.use(express.static('public'))
 
@@ -25,6 +32,9 @@ app.get('/', function(req, res){
 //user routes
 app.use('/users',authMiddlewares.requireAuth, userRoute);
 app.use('/auth', authRoute);
+app.use('/products',productRoute);
+app.use('/cart',cartRoute);
+app.use('/tranfer',tranferRoute);
 
 app.listen(port, function(){
     console.log("Listening to port " + port);

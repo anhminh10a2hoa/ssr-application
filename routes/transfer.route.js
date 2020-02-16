@@ -1,6 +1,6 @@
 var express = require('express');
 
-var controller = require('../controllers/tranfer.controller');
+var controller = require('../controllers/transfer.controller');
 
 var router = express.Router();
 

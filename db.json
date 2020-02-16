@@ -652,6 +652,18 @@
       "cart": {
         "bbd39ff6-97c6-4382-9684-b2ede0e17572": 3
       }
+    },
+    {
+      "id": "-Q_cKCS3",
+      "cart": {}
+    }
+  ],
+  "transfer": [
+    {
+      "id": "Si7wW7Pa",
+      "amount": 500000,
+      "accountId": "123456",
+      "userId": "HNsqP8c5"
     }
   ]
 }

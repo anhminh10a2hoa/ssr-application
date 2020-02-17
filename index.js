@@ -4,6 +4,9 @@ const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
 var csrf = require('csurf')
+var mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true});
 
 var userRoute = require('./routes/user.route')
 var authRoute = require('./routes/auth.route')
